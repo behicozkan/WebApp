@@ -1,0 +1,59 @@
+﻿@using WebApp.Models.EntityFramework;
+@using WebApp.Controllers;
+
+@model List<StudentCourseWithCourse>
+@{
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body> 
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>CourseID</th>
+                    <th>Ders Adı</th>
+                    <th>Ders Kredisi</th>
+                    
+
+                    <th>Onay Durumu</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dersler in Model)
+                {
+                     <tr>
+                         <td>@dersler.StudentCourses.CourseID</td>
+                         <td>@dersler.Course.CourseName</td>
+                         <td>@dersler.Course.Credit</td>
+                         <td>
+                             @if (dersler.StudentCourses.isApproved)
+                             {
+                                 <b class="text-success">Onaylandı</b>
+                             }
+                             else
+                             {
+                                 <b class="text-danger ">Onay Bekliyor</b>
+                             }
+                         </td>
+
+
+
+
+
+                     </tr>
+            }
+            </tbody>
+        </table>
+    
+</body>
+</html>

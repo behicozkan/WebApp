@@ -1,0 +1,69 @@
+﻿@using WebApp.Models.EntityFramework;
+@using WebApp.Controllers;
+
+@model List<StudentCourseAddDelete>
+
+@{
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    @{
+        string currentId = ViewContext.RouteData.Values["id"].ToString();
+
+    }
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Ders Adı</th>
+                <th>Ders Kodu</th>
+                <th>Ders Kredisi</th>
+                <th> EKle Bırak</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dersler in Model)
+            {
+                <tr>
+                    <td>@dersler.Course.CourseID</td>
+                    <td>@dersler.Course.CourseName</td>
+
+                    <td>@dersler.Course.Credit</td>
+                    <td>
+                        @if (dersler.MevcutMu)
+                        {
+
+
+                            <a class="btn btn-danger" href="@Url.Action("Sil", "StudentCourses", new { id = dersler.Course.CourseID, studentId = currentId })">Sil</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-success" href="@Url.Action("Ekle", "StudentCourses", new { id = dersler.Course.CourseID, studentId = currentId })">Ekle</a>
+
+
+                        }
+                    </td>
+
+
+
+
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

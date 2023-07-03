@@ -1,0 +1,48 @@
+﻿@using WebApp.Models.EntityFramework;
+@using WebApp.Controllers;
+
+@model List<Messages>
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Öğrenci Numarası </th>
+                <th>Mesaj</th>
+                <th>Gönderme tarihi</th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dersler in Model)
+            {
+                <tr>
+                    <td>@dersler.SenderID</td>
+                    <td>@dersler.MessageText</td>
+                    <td>@dersler.Date</td>
+
+
+
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

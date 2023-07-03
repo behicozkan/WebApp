@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="177e0f5c7db74973a4d06cd00a6ea76a" Name="Diagram1">
+        <EntityTypeShape EntityType="StudentManagementSystemModel.Admin" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentManagementSystemModel.Course" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentManagementSystemModel.Messages" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentManagementSystemModel.Student" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentManagementSystemModel.StudentCourseGrades" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentManagementSystemModel.StudentCourses" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="StudentManagementSystemModel.FK_Course_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementSystemModel.FK_Messages_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementSystemModel.FK_Student_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementSystemModel.FK_StudentCourseGrades_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementSystemModel.FK_StudentCourses_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementSystemModel.FK_Messages_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementSystemModel.FK_StudentCourseGrades_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentManagementSystemModel.FK_StudentCourses_Student" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

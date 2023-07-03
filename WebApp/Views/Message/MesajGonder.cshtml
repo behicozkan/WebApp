@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mesaj Gönderme Örneği</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    @{
+        string currentId = ViewContext.RouteData.Values["id"].ToString();
+
+    }
+    <div class="container">
+        <h1>Danışman Öğretim Görevlisi ile İletişim</h1>
+
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <div class="alert alert-success">
+                @ViewBag.Message
+            </div>
+        }
+
+        <form method="post" action="@Url.Action("Gonder", "Message", new { id = currentId })">
+            <div class="form-group">
+                <label for="message">Mesajınızı girin:</label>
+                <textarea class="form-control" id="message" name="Mesaj" rows="4" cols="50"></textarea>
+            </div>
+       
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </form>
+
+    </div>
+
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

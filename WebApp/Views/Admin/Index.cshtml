@@ -1,0 +1,65 @@
+﻿@using WebApp.Models.EntityFramework;
+@using WebApp.Controllers;
+
+@model List<dersOnayModel>
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    @{
+        string currentId = ViewContext.RouteData.Values["id"].ToString();
+
+    }
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Derskodu</th>
+                <th>Ders Adı</th>
+                <th>Ders'e Ekleyen öğrenci'</th>
+
+
+                <th>Onay Durumu</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dersler in Model)
+            {
+                <tr>
+                    <td>@dersler.StudentCourses.CourseID</td>
+                    <td>@dersler.Course.CourseName</td>
+                    <td>@dersler.Student.Name</td>
+                    <td>
+                        @if (!dersler.StudentCourses.isApproved)
+                        {
+                            <a class="btn btn-success" href="@Url.Action("Onayla", "Admin", new { studentCourseId = dersler.StudentCourses.StudentCoursesID, adminId = currentId })">Onayla</a>
+                          
+                            <a class="btn btn-danger">Sil</a>
+
+
+
+                        }
+
+                    </td>
+
+
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

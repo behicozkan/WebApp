@@ -1,0 +1,66 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Girişi</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        /* CSS stilleri */
+    </style>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("form2Example1").value;
+            var password = document.getElementById("form2Example2").value;
+
+            if (username === "" || password === "") {
+                alert("Kullanıcı adı ve şifre alanları boş bırakılamaz.");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Admin Girişi   <i class='fas fa-user-tie' style='font-size:36px'></i>  </h2>
+
+    @ViewBag.Mesaj
+    @model WebApp.Models.EntityFramework.Admin
+    @using (Html.BeginForm("AdminAuth", "Login", FormMethod.Post))
+    {
+        <div class="form-outline mb-4">
+            @Html.LabelFor(model => model.AdminID)
+            @Html.TextBoxFor(model => model.AdminID, new { @class = "form-control", placeholder = "Kullanıcı Adı" })
+            <label class="form-label" for="form2Example1"></label>
+        </div>
+
+
+        <div class="form-outline mb-4">
+            @Html.LabelFor(model => model.Password)
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Şifrenizi Girin" })
+
+
+        </div>
+
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+                <!-- Checkbox -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                    <label class="form-check-label" for="form2Example31"> Beni Hatırla </label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Giriş Yap</button>
+    }
+
+    <!-- Register buttons -->
+    <div class="text-center">
+        <p>@Html.ActionLink("Öğrenci Girişi", "StudentLogin")</p>
+
+
+    </div>
+</body>
+</html>
