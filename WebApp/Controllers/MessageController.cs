@@ -12,7 +12,7 @@ namespace WebApp.Controllers
     {
         StudentManagementSystemEntities1 db = new StudentManagementSystemEntities1();
 
-      
+        [Authorize]
         public ActionResult MesajGonder(int id)
         {
             return View();

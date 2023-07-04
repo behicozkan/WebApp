@@ -26,7 +26,12 @@ namespace WebApp.Controllers
         public ActionResult StudentAuth(Student student)
         {
             var studentInDb = db.Student.FirstOrDefault(x => x.StudentID == student.StudentID && x.Password == student.Password);
-            if(studentInDb != null)
+            if (string.IsNullOrEmpty(student.StudentID.ToString()) || string.IsNullOrEmpty(student.Password))
+            {
+                ViewBag.Mesaj = "Kullanıcı Adı veya Şifre boş olamaz";
+                return View("StudentLogin");
+            }
+            if (studentInDb != null)
             {
                 FormsAuthentication.SetAuthCookie(studentInDb.StudentID.ToString(), false);
                 return RedirectToAction("Index", "StudentCourses", new {id= studentInDb.StudentID});
@@ -43,6 +48,11 @@ namespace WebApp.Controllers
         public ActionResult AdminAuth(Admin admin)
         {
             var adminInDb = db.Admin.FirstOrDefault(x => x.AdminID == admin.AdminID && x.Password == admin.Password);
+            if (string.IsNullOrEmpty(admin.AdminID.ToString()) || string.IsNullOrEmpty(admin.Password))
+            {
+                ViewBag.Mesaj = "Kullanıcı Adı veya Şifre boş olamaz";
+                return View("AdminLogin");
+            }
             if (adminInDb != null)
             {
                 FormsAuthentication.SetAuthCookie(adminInDb.AdminID.ToString(), false);

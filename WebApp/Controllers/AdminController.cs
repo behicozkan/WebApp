@@ -37,6 +37,7 @@ namespace WebApp.Controllers
             return View(model);
         }
 
+        [Authorize]
 
         public ActionResult GelenKutusu(int id)
         {

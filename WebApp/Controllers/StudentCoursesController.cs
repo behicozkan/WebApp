@@ -67,10 +67,18 @@ namespace WebApp.Controllers
 
         public ActionResult Ekle(int id, int studentId)
         {
-            // gerekli işle onay monay düşün 
+            var eklenenDers = new StudentCourses()
+            {
+                CourseID = id,
+                StudentID = studentId,
+                isApproved = false,
+            };
 
+            db.StudentCourses.Add(eklenenDers);
+            db.SaveChanges();
+            db.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index", new { id = studentId });
         }
 
 
